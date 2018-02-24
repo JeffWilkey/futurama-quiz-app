@@ -37,7 +37,7 @@ function getStartedPage() {
     $(".quiz-container").append(`
         <div class="quiz-page-1">
             <header>
-                <img class="quiz-logo" src="planet-express.png">
+                <img class="quiz-logo" src="images/planet-express.png">
                 <h1 class="quiz-title">The Planet Express Quiz</h1>
                 <p class="quiz-explain">Welcome to the quiz.<br /> Try to get as many questions right as you can.
                 </p>
@@ -51,7 +51,7 @@ function resultsPage() {
     $(".quiz-container").append(`
         <div class="results-page">
             <header>
-                <img class="results-header-img" src="planet-express.png" />
+                <img class="results-header-img" src="images/planet-express.png" />
                 <h1 class="results-header">Results</h1>
             </header>
             <div class="question-divider"></div>
