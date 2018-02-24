@@ -68,6 +68,10 @@ main {
 	background-color: #e56357;
 }
 
+.question-index {
+	margin-top: 0;
+	text-align: center;
+}
 
 .question-img {
 	display: block;

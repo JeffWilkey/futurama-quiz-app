@@ -86,6 +86,8 @@ function renderQuestionPage(question) {
     if ($(".question-container").length < 1) {
         $(".quiz-container").append(`
             <div class="question-container">
+                <p class="question-index">Question: ${QUIZ.indexOf(question) + 1} out of ${QUIZ.length}</p>
+                <div class="question-divider"></div>
                 <img class="question-img" src="${question.image}" />
                 <p class="question-text">${question.body}</p>
                 <div class="question-divider"></div>
