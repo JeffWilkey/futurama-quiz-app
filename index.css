@@ -11,6 +11,13 @@ main {
 	max-width: 960px;
 }
 
+.shake-answer {
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
 .quiz-container {
 	margin: 40px auto 0 auto;
 	padding: 40px 0;
@@ -33,7 +40,7 @@ main {
 }
 
 .quiz-logo:hover {
-	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+		animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   	transform: translate3d(0, 0, 0);
   	backface-visibility: hidden;
   	perspective: 1000px;
@@ -133,6 +140,9 @@ input[type="radio"] {
 .answer-correct {
 	margin-left: 38px;
 	color: #2ecc71;
+}
+.answer-incorrect {
+	color: #e74c3c;
 }
 
 .results-header {

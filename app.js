@@ -115,11 +115,15 @@ function userSubmitAnswer(currentQuestion) {
         let nextQuestionIndex = QUIZ.indexOf(currentQuestion) + 1;
         if (userAnswer.toString() === currentQuestion.correctAnswer.toString()) {
             $(".answer-incorrect").hide();
-            $(".answer-correct").fadeIn(400);
+            $(".answer-correct").fadeIn(400, function() {
+                $(this).addClass("shake-answer")
+            });
             correctCount++
         } else {
             $(".answer-correct").hide();
-            $(".answer-incorrect").fadeIn(400);
+            $(".answer-incorrect").fadeIn(400, function() {
+                $(this).addClass("shake-answer")
+            });
         }
         $(".question-submit").hide();
         $(".next-question").css("display", "block");
