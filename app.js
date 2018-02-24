@@ -43,8 +43,8 @@ function getStartedPage() {
                 </p>
            </header>
            <button class="quiz-start">Get Started</button>
-        </div>`
-   )
+        </div>
+    `);
 }
 
 function resultsPage(correctCount) {
@@ -59,7 +59,7 @@ function resultsPage(correctCount) {
             <h2 class="results-numbers">You got ${correctCount} out of ${QUIZ.length} right!</h2>
             <button class="try-again">Try Again</button>
         </div>
-    `)
+    `);
     tryAgain();
 }
 
@@ -79,7 +79,6 @@ function onClickGetStarted() {
             correctCount = 0;
             renderQuestionPage(QUIZ[0]);
         });
-
     });
 }
 
@@ -106,7 +105,7 @@ function renderQuestionPage(question) {
                     <button class="next-question">Next Question</button>
                 </div>
             </div>
-        `)
+        `);
     }
     userSubmitAnswer(question);
 }
@@ -140,7 +139,7 @@ function userSelectNextQuestion(nextQuestionIndex, correctCount) {
         } else {
             fadeToNext(nextQuestionIndex);
         }
-    })
+    });
 }
 
 // Fade to next question
