@@ -47,7 +47,7 @@ function getStartedPage() {
     `);
 }
 
-function resultsPage(correctCount) {
+function resultsPage() {
     $(".quiz-container").append(`
         <div class="results-page">
             <header>
@@ -76,7 +76,6 @@ function tryAgain() {
 function onClickGetStarted() {
     $(".quiz-container").on('click', '.quiz-start', function() {
         $(".quiz-page-1").fadeOut(400, function() {
-            correctCount = 0;
             renderQuestionPage(QUIZ[0]);
         });
     });
@@ -84,7 +83,6 @@ function onClickGetStarted() {
 
 
 function renderQuestionPage(question) {
-    console.log($(".question-container").length);
     if ($(".question-container").length < 1) {
         $(".quiz-container").append(`
             <div class="question-container">
@@ -118,24 +116,22 @@ function userSubmitAnswer(currentQuestion) {
         if (userAnswer.toString() === currentQuestion.correctAnswer.toString()) {
             $(".answer-incorrect").hide();
             $(".answer-correct").fadeIn(400);
-            console.log(correctCount);
-            correctCount++;
-            console.log(correctCount);
+            correctCount++
         } else {
             $(".answer-correct").hide();
             $(".answer-incorrect").fadeIn(400);
         }
         $(".question-submit").hide();
         $(".next-question").css("display", "block");
-        userSelectNextQuestion(nextQuestionIndex, correctCount);
+        userSelectNextQuestion(nextQuestionIndex);
     });
 }
 
-function userSelectNextQuestion(nextQuestionIndex, correctCount) {
+function userSelectNextQuestion(nextQuestionIndex) {
     // Check to see if we just finished the last question.
     $(".question-container").on('click', '.next-question', function(event) {
         if(nextQuestionIndex === QUIZ.length) {
-            renderResultsPage(correctCount)
+            renderResultsPage()
         } else {
             fadeToNext(nextQuestionIndex);
         }
@@ -150,15 +146,16 @@ function fadeToNext(index) {
     });
 }
 
-function renderResultsPage(correctCount) {
+function renderResultsPage() {
     $(".question-container").fadeOut(400, function() {
         $(this).remove();
-        resultsPage(correctCount);
+        resultsPage();
     });
 }
 
 
 function initializeQuiz() {
+    correctCount = 0;
     getStartedPage();
     onClickGetStarted();
 }
