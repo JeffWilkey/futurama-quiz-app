@@ -93,9 +93,13 @@ function renderQuestionPage(question) {
                 <div class="question-divider"></div>
                 <div class="question-form-wrap">
                     <form id="question" class="question-form">
-                        <input type="radio" name="question" value="0" /><p class="answer">${question.answers[0]}</p><br/>
-                        <input type="radio" name="question" value="1" /><p class="answer">${question.answers[1]}</p><br/>
+                        <label for="answer-0"></label>
+                        <input id="answer-0" type="radio" name="question" value="0" /><p class="answer">${question.answers[0]}</p><br/>
+                        <label for="answer-1"></label>
+                        <input id="answer-1" type="radio" name="question" value="1" /><p class="answer">${question.answers[1]}</p><br/>
+                        <label name="${question.answers[2]}"></label>
                         <input type="radio" name="question" value="2" /><p class="answer">${question.answers[2]}</p><br/>
+                        <label name="${question.answers[3]}"></label>
                         <input type="radio" name="question" value="3" /><p class="answer">${question.answers[3]}</p><br/>
                         <p class="answer-correct">Correct</p>
                         <p class="answer-incorrect">Incorrect, the answer was: ${question.answers[question.correctAnswer]}</p>
