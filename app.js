@@ -37,7 +37,7 @@ function getStartedPage() {
     $(".quiz-container").append(`
         <div class="quiz-page-1">
             <header>
-                <img class="quiz-logo" src="images/planet-express.png">
+                <img class="quiz-logo" src="images/planet-express.png" alt="planet express logo" />
                 <h1 class="quiz-title">The Planet Express Quiz</h1>
                 <p class="quiz-explain">Welcome to the quiz.<br /> Try to get as many questions right as you can.
                 </p>
@@ -51,11 +51,11 @@ function resultsPage() {
     $(".quiz-container").append(`
         <div class="results-page">
             <header>
-                <img class="results-header-img" src="images/planet-express.png" />
+                <img class="results-header-img" src="images/planet-express.png" alt="planet express logo" />
                 <h1 class="results-header">Results</h1>
             </header>
             <div class="question-divider"></div>
-            <img class="results-congrats-image" src="https://media.giphy.com/media/ANbD1CCdA3iI8/giphy.gif" />
+            <img class="results-congrats-image" src="https://media.giphy.com/media/ANbD1CCdA3iI8/giphy.gif" alt="Fry from Futurama thinking"/>
             <h2 class="results-numbers">You got ${correctCount} out of ${QUIZ.length} right!</h2>
             <button class="try-again">Try Again</button>
         </div>
@@ -93,14 +93,17 @@ function renderQuestionPage(question) {
                 <div class="question-divider"></div>
                 <div class="question-form-wrap">
                     <form id="question" class="question-form">
-                        <label for="answer-0"></label>
+                        <label for="answer-0">${question.answers[0]}</label>
                         <input id="answer-0" type="radio" name="question" value="0" /><p class="answer">${question.answers[0]}</p><br/>
-                        <label for="answer-1"></label>
+
+                        <label for="answer-1">${question.answers[1]}</label>
                         <input id="answer-1" type="radio" name="question" value="1" /><p class="answer">${question.answers[1]}</p><br/>
-                        <label name="${question.answers[2]}"></label>
-                        <input type="radio" name="question" value="2" /><p class="answer">${question.answers[2]}</p><br/>
-                        <label name="${question.answers[3]}"></label>
-                        <input type="radio" name="question" value="3" /><p class="answer">${question.answers[3]}</p><br/>
+
+                        <label for="answer-2">${question.answers[2]}</label>
+                        <input id="answer-2" type="radio" name="question" value="2" /><p class="answer">${question.answers[2]}</p><br/>
+
+                        <label for="answer-3">${question.answers[3]}</label>
+                        <input id="answer-3" type="radio" name="question" value="3" /><p class="answer">${question.answers[3]}</p><br/>
                         <p class="answer-correct">Correct</p>
                         <p class="answer-incorrect">Incorrect, the answer was: ${question.answers[question.correctAnswer]}</p>
                         <button class="question-submit" type="submit">Submit</button>

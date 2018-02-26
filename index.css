@@ -114,6 +114,10 @@ input[type="radio"] {
 	text-align: left;
 }
 
+.question-form label {
+	font-size: 0;
+}
+
 .question-submit,
 .next-question,
 .try-again {
