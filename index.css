@@ -90,7 +90,7 @@ main {
 .question-divider {
 	width: 80px;
 	height: 4px;
-	margin: 0 auto 20px auto;
+	margin: 20px auto;
 	background-color: #eaeaea;
 	border-radius: 2px;
 }
@@ -133,17 +133,27 @@ input[type="radio"] {
 	background-color: #e56357;
 }
 
+.question-legend {
+	text-align: center;
+	font-size: 1.2rem;
+	margin-top: 20px;
+}
+.question-fieldset {
+	width: 80%;
+	border: none;
+	margin: 0 auto;
+}
 .next-question {
 	display: none;
 }
 
 .answer-correct,
 .answer-incorrect {
+	text-align: center;
 	display: none;
 }
 
 .answer-correct {
-	margin-left: 38px;
 	color: #2ecc71;
 }
 .answer-incorrect {

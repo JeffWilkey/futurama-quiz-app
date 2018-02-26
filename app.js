@@ -89,14 +89,16 @@ function renderQuestionPage(question) {
                 <p class="question-index">Question: ${QUIZ.indexOf(question) + 1} out of ${QUIZ.length}</p>
                 <div class="question-divider"></div>
                 <img class="question-img" src="${question.image}" />
-                <p class="question-text">${question.body}</p>
-                <div class="question-divider"></div>
                 <div class="question-form-wrap">
                     <form id="question" class="question-form">
-                        <input type="radio" name="question" value="0" /><p class="answer">${question.answers[0]}</p><br/>
-                        <input type="radio" name="question" value="1" /><p class="answer">${question.answers[1]}</p><br/>
-                        <input type="radio" name="question" value="2" /><p class="answer">${question.answers[2]}</p><br/>
-                        <input type="radio" name="question" value="3" /><p class="answer">${question.answers[3]}</p><br/>
+                        <fieldset class="question-fieldset">
+                            <legend class="question-legend">${question.body}</legend>
+                            <div class="question-divider"></div>
+                            <input type="radio" name="question" value="0" /><p class="answer">${question.answers[0]}</p><br/>
+                            <input type="radio" name="question" value="1" /><p class="answer">${question.answers[1]}</p><br/>
+                            <input type="radio" name="question" value="2" /><p class="answer">${question.answers[2]}</p><br/>
+                            <input type="radio" name="question" value="3" /><p class="answer">${question.answers[3]}</p><br/>
+                        </fieldset>
                         <p class="answer-correct">Correct</p>
                         <p class="answer-incorrect">Incorrect, the answer was: ${question.answers[question.correctAnswer]}</p>
                         <button class="question-submit" type="submit">Submit</button>
