@@ -70,7 +70,24 @@ main {
 
 .question-index {
 	margin-top: 0;
+	margin-bottom: 5px;
 	text-align: center;
+}
+
+.question-current-score {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	margin: 0;
+	font-weight: bold;
+}
+
+.question-current-score-correct {
+	color: #2ecc71;
+}
+
+.question-current-score-incorrect {
+	color: #e74c3c;
 }
 
 .question-img {
@@ -148,7 +165,8 @@ input[type="radio"] {
 }
 
 .answer-correct,
-.answer-incorrect {
+.answer-incorrect,
+.answer-none {
 	text-align: center;
 	display: none;
 }
@@ -158,6 +176,9 @@ input[type="radio"] {
 }
 .answer-incorrect {
 	color: #e74c3c;
+}
+.answer-none {
+	color: #ff9f43;
 }
 
 .results-header {

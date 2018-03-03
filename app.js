@@ -32,6 +32,7 @@ const QUIZ = [
 ]
 
 let correctCount = 0;
+let incorrectCount = 0;
 
 function getStartedPage() {
     $(".quiz-container").append(`
@@ -87,6 +88,10 @@ function renderQuestionPage(question) {
         $(".quiz-container").append(`
             <div class="question-container">
                 <p class="question-index">Question: ${QUIZ.indexOf(question) + 1} out of ${QUIZ.length}</p>
+                <p class="question-current-score">
+                    <span class="question-current-score-correct">${correctCount} correct</span> |
+                    <span class="question-current-score-incorrect">${incorrectCount} incorrect</span>
+                </p>
                 <div class="question-divider"></div>
                 <img class="question-img" src="${question.image}" />
                 <div class="question-form-wrap">
@@ -99,6 +104,7 @@ function renderQuestionPage(question) {
                             <input id="answer-3" type="radio" name="question" value="2" /><label for="answer-3" class="answer">${question.answers[2]}</label><br/>
                             <input id="answer-4" type="radio" name="question" value="3" /><label for="answer-4" class="answer">${question.answers[3]}</label><br/>
                         </fieldset>
+                        <p class="answer-none">Oops you forgot to choose an answer</p>
                         <p class="answer-correct">Correct</p>
                         <p class="answer-incorrect">Incorrect, the answer was: ${question.answers[question.correctAnswer]}</p>
                         <button class="question-submit" type="submit">Submit</button>
@@ -108,6 +114,8 @@ function renderQuestionPage(question) {
                 </div>
             </div>
         `);
+        // Reset correct count and incorrect count number and text if quiz is on first question
+        scoreCheck(question);
     }
     userSubmitAnswer(question);
 }
@@ -117,22 +125,57 @@ function userSubmitAnswer(currentQuestion) {
         event.preventDefault();
         let userAnswer = $('input[name="question"]:checked').val();
         let nextQuestionIndex = QUIZ.indexOf(currentQuestion) + 1;
+
+        // Check to see if there's a userAnswer and if there's not:
+        // let the user know they need to choose an answer
+        if (!checkForAnswer(userAnswer)) {
+            $(".answer-none").fadeIn(400, function() {
+                $(this).addClass("shake-answer")
+            });
+        }
+
+        // Reset correct count and incorrect count if quiz is on question 1
+        scoreCheck(currentQuestion);
+
+        // If answer is correct
         if (userAnswer.toString() === currentQuestion.correctAnswer.toString()) {
             $(".answer-incorrect").hide();
+            $(".answer-none").hide();
             $(".answer-correct").fadeIn(400, function() {
                 $(this).addClass("shake-answer")
             });
             correctCount++
+            $(".question-current-score-correct").text(`${correctCount} correct`)
+        // If answer is incorrect
         } else {
             $(".answer-correct").hide();
+            $(".answer-none").hide();
             $(".answer-incorrect").fadeIn(400, function() {
                 $(this).addClass("shake-answer")
             });
+            incorrectCount++
+            $(".question-current-score-incorrect").text(`${incorrectCount} incorrect`)
         }
+        // Clean up form and display button to move on
         $(".question-submit").hide();
         $(".next-question").css("display", "block");
         userSelectNextQuestion(nextQuestionIndex);
+
+
     });
+}
+
+function scoreCheck(question) {
+    if (QUIZ.indexOf(question) === 0) {
+        correctCount = 0;
+        incorrectCount = 0;
+        $(".question-current-score-correct").text(`${correctCount} correct`)
+        $(".question-current-score-incorrect").text(`${incorrectCount} incorrect`)
+    }
+}
+
+function checkForAnswer(answer) {
+     answer !== undefined ? true : false;
 }
 
 function userSelectNextQuestion(nextQuestionIndex) {
@@ -163,7 +206,6 @@ function renderResultsPage() {
 
 
 function initializeQuiz() {
-    correctCount = 0;
     getStartedPage();
     onClickGetStarted();
 }
