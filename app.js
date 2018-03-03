@@ -58,14 +58,14 @@ function resultsPage() {
             <div class="question-divider"></div>
             <img class="results-congrats-image" src="https://media.giphy.com/media/ANbD1CCdA3iI8/giphy.gif" />
             <h2 class="results-numbers">You got ${correctCount} out of ${QUIZ.length} right!</h2>
-            <button class="try-again">Try Again</button>
+            <button class="start-over">Start Over</button>
         </div>
     `);
     tryAgain();
 }
 
 function tryAgain() {
-    $(".quiz-container").on('click', '.try-again', function() {
+    $(".quiz-container").on('click', '.start-over', function() {
         $(".results-page").fadeOut(400, function() {
             initializeQuiz();
             $(this).remove();

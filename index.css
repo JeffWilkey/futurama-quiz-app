@@ -133,7 +133,7 @@ input[type="radio"] {
 
 .question-submit,
 .next-question,
-.try-again {
+.start-over {
 	transition: .2s;
 	display: block;
 	margin: 15px auto;
@@ -146,7 +146,7 @@ input[type="radio"] {
 
 .question-submit:hover,
 .next-question:hover,
-.try-again:hover {
+.start-over:hover {
 	background-color: #e56357;
 }
 
