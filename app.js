@@ -68,6 +68,7 @@ function tryAgain() {
     $(".quiz-container").on('click', '.try-again', function() {
         $(".results-page").fadeOut(400, function() {
             initializeQuiz();
+            $(this).remove();
         });
     });
 }
@@ -78,6 +79,7 @@ function onClickGetStarted() {
     $(".quiz-container").on('click', '.quiz-start', function() {
         $(".quiz-page-1").fadeOut(400, function() {
             renderQuestionPage(QUIZ[0]);
+            $(this).remove();
         });
     });
 }
@@ -104,11 +106,7 @@ function renderQuestionPage(question) {
                             <input id="answer-3" type="radio" name="question" value="2" /><label for="answer-3" class="answer">${question.answers[2]}</label><br/>
                             <input id="answer-4" type="radio" name="question" value="3" /><label for="answer-4" class="answer">${question.answers[3]}</label><br/>
                         </fieldset>
-                        <p class="answer-none">Oops you forgot to choose an answer</p>
-                        <p class="answer-correct">Correct</p>
-                        <p class="answer-incorrect">Incorrect, the answer was: ${question.answers[question.correctAnswer]}</p>
                         <button class="question-submit" type="submit">Submit</button>
-
                     </form>
                     <button class="next-question">Next Question</button>
                 </div>
@@ -129,6 +127,9 @@ function userSubmitAnswer(currentQuestion) {
         // Check to see if there's a userAnswer and if there's not:
         // let the user know they need to choose an answer
         if (!checkForAnswer(userAnswer)) {
+            $(".question-fieldset").after(`
+                <p class="answer-none">Oops you forgot to choose an answer</p>
+            `)
             $(".answer-none").fadeIn(400, function() {
                 $(this).addClass("shake-answer")
             });
@@ -139,18 +140,24 @@ function userSubmitAnswer(currentQuestion) {
 
         // If answer is correct
         if (userAnswer.toString() === currentQuestion.correctAnswer.toString()) {
-            $(".answer-incorrect").hide();
-            $(".answer-none").hide();
-            $(".answer-correct").fadeIn(400, function() {
+            $(".answer-incorrect").remove();
+            $(".answer-none").remove();
+            $(".question-fieldset").after(`
+                <p class="answer-correct">Correct</p>
+            `);
+            $(".answer-correct").fadeIn(300, function() {
                 $(this).addClass("shake-answer")
             });
             correctCount++
             $(".question-current-score-correct").text(`${correctCount} correct`)
         // If answer is incorrect
         } else {
-            $(".answer-correct").hide();
-            $(".answer-none").hide();
-            $(".answer-incorrect").fadeIn(400, function() {
+            $(".answer-correct").remove();
+            $(".answer-none").remove();
+            $(".question-fieldset").after(`
+                <p class="answer-incorrect">Incorrect, the answer was: ${currentQuestion.answers[currentQuestion.correctAnswer]}</p>
+            `);
+            $(".answer-incorrect").fadeIn(300, function() {
                 $(this).addClass("shake-answer")
             });
             incorrectCount++
