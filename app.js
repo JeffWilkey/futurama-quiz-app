@@ -94,10 +94,10 @@ function renderQuestionPage(question) {
                         <fieldset class="question-fieldset">
                             <legend class="question-legend">${question.body}</legend>
                             <div class="question-divider"></div>
-                            <input type="radio" name="question" value="0" /><p class="answer">${question.answers[0]}</p><br/>
-                            <input type="radio" name="question" value="1" /><p class="answer">${question.answers[1]}</p><br/>
-                            <input type="radio" name="question" value="2" /><p class="answer">${question.answers[2]}</p><br/>
-                            <input type="radio" name="question" value="3" /><p class="answer">${question.answers[3]}</p><br/>
+                            <input id="answer-1" type="radio" name="question" value="0" /><label for="answer-1" class="answer">${question.answers[0]}</label><br/>
+                            <input id="answer-2" type="radio" name="question" value="1" /><label for="answer-2" class="answer">${question.answers[1]}</label><br/>
+                            <input id="answer-3" type="radio" name="question" value="2" /><label for="answer-3" class="answer">${question.answers[2]}</label><br/>
+                            <input id="answer-4" type="radio" name="question" value="3" /><label for="answer-4" class="answer">${question.answers[3]}</label><br/>
                         </fieldset>
                         <p class="answer-correct">Correct</p>
                         <p class="answer-incorrect">Incorrect, the answer was: ${question.answers[question.correctAnswer]}</p>
