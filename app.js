@@ -3,7 +3,7 @@ const QUIZ = [
         body: "In 'Space Pilot 3000' who was the first main character Fry met?",
         image: "http://slurmed.com/fgrabs/01acv01/01acv01_019.jpg",
         answers: ["Zoidberg", "Leela", "Bender", "Farnsworth"],
-        correctAnswer: 2
+        correctAnswer: 1
     },
     {
         body: "In 'The Series Has Landed' what was the name of the amusement park on the moon?",
